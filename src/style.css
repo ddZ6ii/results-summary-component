@@ -17,7 +17,7 @@
       format('truetype-variations');
   font-style: normal;
   /* Allowable range for the weight of the variable font. */
-  font-weight: 500 700 800;
+  font-weight: 500 800;
   /* Displaying text quickly is a top priority, but ensure the custom web-font is used. */
   font-display: swap;
 }
@@ -60,20 +60,37 @@
 /* ########################################
 ############# BASIC STYLING ###############
 ######################################## */
-
 :root {
-  --primary-red: 0 100% 67%;
-  --primary-orange: 39, 100% 56%;
-  --primary-green: 166 100% 37%;
-  --primary-blue: 234 85% 45%;
-  --gradient-bg-slate-blue: hsl(252, 100%, 67%);
-  --gradient-bg-royal-blue: hsl(241, 81%, 54%);
-  --gradient-circle-violet-blue: hsla(256, 72%, 46%, 1);
-  --gradient-circle-persian-blue: hsla(241, 72%, 46%, 0);
-  --color-neutral-white: hsl(0, 0%, 100%);
-  --color-neutral-pale-blue: hsl(221, 100%, 96%);
-  --color-neutral-light-lavender: hsl(241, 100%, 89%);
-  --color-neutral-dark-blue: hsl(224, 30%, 27%);
+  --hsl-accent-1: 0 100% 67%;
+  --hsl-accent-2: 39 100% 56%;
+  --hsl-accent-3: 166 100% 37%;
+  --hsl-accent-4: 234 85% 45%;
+  --hsl-neutral-300: 224 30% 27%;
+  --color-primary: hsl(241, 81%, 54%);
+  --color-primary-dark: hsla(241, 72%, 46%, 0);
+  --color-secondary: hsl(252, 100%, 67%);
+  --color-secondary-dark: hsla(256, 72%, 46%, 1);
+  --color-neutral-50: hsl(0, 0%, 100%);
+  --color-neutral-100: hsl(221, 100%, 96%);
+  --color-neutral-200: hsl(241, 100%, 89%);
+  --color-neutral-300: hsl(var(--hsl-neutral-300));
+
+  --font-size-body: 1.125rem;
+  --font-size-body-lg: 1.5rem;
+  --font-size-body-xl: 4rem;
+  --font-size-heading: 1.5rem;
+
+  --spacing: 1rem;
+
+  --gradient-bg-primary: linear-gradient(
+    to bottom,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+
+  --border-radius: 8px;
+  --border-radius-xl: 32px;
+  --border-rounded: 9999px;
 }
 
 *,
@@ -93,17 +110,31 @@ html {
 }
 
 body {
+  color: var(--color-neutral-300);
+  font-size: var(--font-size-body);
   /* Use static fonts by default... */
   font-family: 'Hanken Grotesk', sans-serif;
-
   /*...but prefer loading variable font if supported (feature query). */
   @supports (font-variation-settings: normal) {
     font-family: 'Hanken Grotesk VF', sans-serif;
   }
 }
 
+h1,
+h2 {
+  letter-spacing: 1px;
+  font-size: var(--font-size-heading);
+  font-weight: 700;
+}
+
 a {
   display: inline-block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 img {
@@ -114,4 +145,191 @@ img {
 ul {
   list-style-position: inside;
   list-style-type: none;
+}
+
+/* ########################################
+########### COMPONENT STYLING #############
+######################################## */
+.wrapper {
+  min-height: 100dvh;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  @media (min-width: 40em) {
+    padding: var(--spacing);
+  }
+}
+
+.grid-layout {
+  display: grid;
+  gap: var(--spacing);
+  &.grid-layout-large {
+    gap: calc(1.5 * var(--spacing));
+  }
+}
+
+.container {
+  margin-inline: auto;
+  width: min(100%, 46.25em);
+  display: grid;
+  overflow: hidden;
+  @media (min-width: 40em) {
+    border-radius: var(--border-radius-xl);
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.result,
+.summary {
+  padding: calc(2 * var(--spacing));
+}
+
+.result {
+  background: var(--gradient-bg-primary);
+  border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl);
+  color: var(--color-neutral-200);
+  text-align: center;
+
+  & .result-heading {
+    color: var(--color-neutral-200);
+  }
+
+  & .result-score {
+    margin-inline: auto;
+    width: 8.75em;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    align-content: center;
+    align-self: self-start;
+    border-radius: var(--border-rounded);
+    background: linear-gradient(
+      to bottom,
+      var(--color-secondary-dark),
+      var(--color-primary-dark)
+    );
+
+    & span {
+      display: block;
+      color: var(--color-neutral-50);
+      line-height: 1;
+      font-size: var(--font-size-body-xl);
+      font-weight: 800;
+    }
+  }
+
+  & .result-details {
+    & span {
+      color: var(--color-neutral-50);
+      letter-spacing: 1px;
+      font-size: var(--font-size-body-lg);
+      font-weight: 700;
+    }
+  }
+
+  @media (min-width: 40em) {
+    border-top-right-radius: var(--border-radius-xl);
+  }
+}
+
+.summary {
+  & .summary-item {
+    padding: var(--spacing);
+    display: flex;
+    gap: calc(0.5 * var(--spacing)) var(--spacing);
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(var(--item-color) / 0.1);
+    border-radius: var(--border-radius);
+    color: hsl(var(--hsl-neutral-300));
+    font-weight: 800;
+  }
+
+  & .summary-item-1 {
+    --item-color: var(--hsl-accent-1);
+  }
+  & .summary-item-2 {
+    --item-color: var(--hsl-accent-2);
+  }
+  & .summary-item-3 {
+    --item-color: var(--hsl-accent-3);
+  }
+  & .summary-item-4 {
+    --item-color: var(--hsl-accent-4);
+  }
+
+  & .summary-item-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+    align-items: center;
+  }
+
+  & .summary-item-heading {
+    color: hsl(var(--item-color));
+  }
+
+  & .summary-item-score {
+    color: hsl(var(--hsl-neutral-300) / 0.5);
+    text-wrap: nowrap;
+
+    & span {
+      color: hsl(var(--hsl-neutral-300) / 1);
+    }
+  }
+
+  & .summary-btn {
+    padding: var(--spacing) calc(2 * var(--spacing));
+    background: transparent;
+    background-color: var(--color-neutral-300);
+    border-radius: var(--border-rounded);
+    color: var(--color-neutral-50);
+    font-weight: 500;
+    transition: translate 150ms ease-out;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--gradient-bg-primary);
+    }
+    &:focus-visible {
+      outline-offset: 4px;
+      outline-color: var(--color-primary);
+    }
+    &:active {
+      translate: 0 2%;
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+
+  & .footer-icon {
+    color: hsl(var(--hsl-accent-1));
+  }
+
+  & .footer-link {
+    transition: color 150ms ease-out;
+    &,
+    &:link {
+      color: var(--color-primary);
+      text-underline-offset: 4px;
+    }
+    &:visited {
+      color: var(--color-neutral-300);
+    }
+    &:focus-visible {
+      color: var(--color-primary);
+      outline-color: var(--color-primary);
+      outline-offset: 1px;
+      text-decoration: none;
+    }
+    &:hover {
+      font-weight: 700;
+    }
+    &:active {
+      color: hsl(var(--hsl-accent-2));
+    }
+  }
 }

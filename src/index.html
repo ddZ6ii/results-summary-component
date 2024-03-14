@@ -17,8 +17,94 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Results summary component</title>
   </head>
-  <body>
-    <h1>Your Result</h1>
+  <body class="grid-layout grid-layout-large wrapper">
+    <main>
+      <section aria-label="Results summary" class="container">
+        <div class="result grid-layout grid-layout-large">
+          <h1 class="result-heading">Your Result</h1>
+          <p class="result-score"><span>76</span> of 100</p>
+          <div class="result-details grid-layout">
+            <span>Great</span>
+            <p>
+              You scored higher than 65% of the people who have taken these
+              tests.
+            </p>
+          </div>
+        </div>
+        <div class="summary grid-layout grid-layout-large">
+          <h2>Summary</h2>
+          <ul class="grid-layout">
+            <li class="summary-item summary-item-1">
+              <div class="summary-item-group">
+                <img
+                  src="/assets/images/icon-reaction.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+                <h3 class="summary-item-heading">Reaction</h3>
+              </div>
+              <p class="summary-item-score"><span>80</span> / 100</p>
+            </li>
+            <li class="summary-item summary-item-2">
+              <div class="summary-item-group">
+                <img
+                  src="/assets/images/icon-memory.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+                <h3 class="summary-item-heading">Memory</h3>
+              </div>
+              <p class="summary-item-score"><span>92</span> / 100</p>
+            </li>
+            <li class="summary-item summary-item-3">
+              <div class="summary-item-group">
+                <img
+                  src="/assets/images/icon-verbal.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+                <h3 class="summary-item-heading">Verbal</h3>
+              </div>
+              <p class="summary-item-score"><span>61</span> / 100</p>
+            </li>
+            <li class="summary-item summary-item-4">
+              <div class="summary-item-group">
+                <img
+                  src="/assets/images/icon-visual.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+                <h3 class="summary-item-heading">Visual</h3>
+              </div>
+              <p class="summary-item-score"><span>72</span> / 100</p>
+            </li>
+          </ul>
+          <button type="button" class="summary-btn">Continue</button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>
+        Challenge by
+        <a
+          href="https://www.frontendmentor.io?ref=challenge"
+          title="Visit the website"
+          class="footer-link"
+          >Frontend Mentor</a
+        >. <br />
+        Coded with <span class="footer-icon">❤</span> by
+        <a
+          href="https://github.com/ddZ6ii"
+          title="Visit Github profile"
+          class="footer-link"
+          >ddZ6ii</a
+        >.
+      </p>
+    </footer>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

@@ -1,7 +1,79 @@
-html {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  box-sizing: border-box;
+/* ########################################
+############# CUSTOM FONTS ################
+######################################## */
+/* Provide variable font as main format. */
+@font-face {
+  /* Use VF to make it distinguishable from static fonts. */
+  font-family: 'Hanken Grotesk VF';
+  src:
+    local('Hanken Grotesk'),
+    /* Main modern font format. */
+      url('/assets/fonts/HankenGrotesk-VariableFont_wght.woff2')
+      format('woff2-variations'),
+    /* Fallback font formats. */
+      url('/assets/fonts/HankenGrotesk-VariableFont_wght.woff')
+      format('woff-variations'),
+    url('/assets/fonts/HankenGrotesk-VariableFont_wght.ttf')
+      format('truetype-variations');
+  font-style: normal;
+  /* Allowable range for the weight of the variable font. */
+  font-weight: 500 700 800;
+  /* Displaying text quickly is a top priority, but ensure the custom web-font is used. */
+  font-display: swap;
+}
+
+/* Provide static fonts as a fallback. */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src:
+    local('Hanken Grotesk'),
+    url('/assets/fonts/static/HankenGrotesk-Medium.woff2') format('woff2'),
+    url('/assets/fonts/static/HankenGrotesk-Medium.woff') format('woff'),
+    url('/assets/fonts/static/HankenGrotesk-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src:
+    local('Hanken Grotesk'),
+    url('/assets/fonts/static/HankenGrotesk-Bold.woff2') format('woff2'),
+    url('/assets/fonts/static/HankenGrotesk-Bold.woff') format('woff'),
+    url('/assets/fonts/static/HankenGrotesk-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src:
+    local('Hanken Grotesk'),
+    url('/assets/fonts/static/HankenGrotesk-ExtraBold.woff2') format('woff2'),
+    url('/assets/fonts/static/HankenGrotesk-ExtraBold.woff') format('woff'),
+    url('/assets/fonts/static/HankenGrotesk-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* ########################################
+############# BASIC STYLING ###############
+######################################## */
+
+:root {
+  --primary-red: 0 100% 67%;
+  --primary-orange: 39, 100% 56%;
+  --primary-green: 166 100% 37%;
+  --primary-blue: 234 85% 45%;
+  --gradient-bg-slate-blue: hsl(252, 100%, 67%);
+  --gradient-bg-royal-blue: hsl(241, 81%, 54%);
+  --gradient-circle-violet-blue: hsla(256, 72%, 46%, 1);
+  --gradient-circle-persian-blue: hsla(241, 72%, 46%, 0);
+  --color-neutral-white: hsl(0, 0%, 100%);
+  --color-neutral-pale-blue: hsl(221, 100%, 96%);
+  --color-neutral-light-lavender: hsl(241, 100%, 89%);
+  --color-neutral-dark-blue: hsl(224, 30%, 27%);
 }
 
 *,
@@ -13,6 +85,21 @@ html {
   color: inherit;
   font: inherit;
   line-height: inherit;
+}
+
+html {
+  line-height: 1.3;
+  box-sizing: border-box;
+}
+
+body {
+  /* Use static fonts by default... */
+  font-family: 'Hanken Grotesk', sans-serif;
+
+  /*...but prefer loading variable font if supported (feature query). */
+  @supports (font-variation-settings: normal) {
+    font-family: 'Hanken Grotesk VF', sans-serif;
+  }
 }
 
 a {

@@ -58,12 +58,12 @@
 }
 
 /* ########################################
-############# BASIC STYLING ###############
+############# STYLE GUIDE #################
 ######################################## */
 :root {
-  --hsl-accent-1: 0 100% 67%;
-  --hsl-accent-2: 39 100% 56%;
-  --hsl-accent-3: 166 100% 37%;
+  --hsl-accent-1: 0 52% 51%;
+  --hsl-accent-2: 39 82% 32%;
+  --hsl-accent-3: 166 100% 25%;
   --hsl-accent-4: 234 85% 45%;
   --hsl-neutral-300: 224 30% 27%;
   --color-primary: hsl(241, 81%, 54%);
@@ -93,6 +93,9 @@
   --border-rounded: 9999px;
 }
 
+/* ########################################
+############# RESET #######################
+######################################## */
 *,
 *::before,
 *::after {
@@ -107,24 +110,6 @@
 html {
   line-height: 1.3;
   box-sizing: border-box;
-}
-
-body {
-  color: var(--color-neutral-300);
-  font-size: var(--font-size-body);
-  /* Use static fonts by default... */
-  font-family: 'Hanken Grotesk', sans-serif;
-  /*...but prefer loading variable font if supported (feature query). */
-  @supports (font-variation-settings: normal) {
-    font-family: 'Hanken Grotesk VF', sans-serif;
-  }
-}
-
-h1,
-h2 {
-  letter-spacing: 1px;
-  font-size: var(--font-size-heading);
-  font-weight: 700;
 }
 
 a {
@@ -145,6 +130,27 @@ img {
 ul {
   list-style-position: inside;
   list-style-type: none;
+}
+
+/* ########################################
+############# BASIC STYLING ###############
+######################################## */
+body {
+  color: var(--color-neutral-300);
+  font-size: var(--font-size-body);
+  /* Use static fonts by default... */
+  font-family: 'Hanken Grotesk', sans-serif;
+  /*...but prefer loading variable font if supported (feature query). */
+  @supports (font-variation-settings: normal) {
+    font-family: 'Hanken Grotesk VF', sans-serif;
+  }
+}
+
+h1,
+h2 {
+  letter-spacing: 1px;
+  font-size: var(--font-size-heading);
+  font-weight: 700;
 }
 
 /* ########################################
@@ -240,7 +246,7 @@ ul {
     gap: calc(0.5 * var(--spacing)) var(--spacing);
     justify-content: space-between;
     align-items: center;
-    background-color: hsl(var(--item-color) / 0.1);
+    background-color: hsl(var(--item-color) / 0.05);
     border-radius: var(--border-radius);
     color: hsl(var(--hsl-neutral-300));
     font-weight: 800;
@@ -271,7 +277,7 @@ ul {
   }
 
   & .summary-item-score {
-    color: hsl(var(--hsl-neutral-300) / 0.5);
+    color: hsl(var(--hsl-neutral-300) / 0.72);
     text-wrap: nowrap;
 
     & span {

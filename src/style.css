@@ -310,11 +310,9 @@ h2 {
 
 .footer {
   text-align: center;
-
   & .footer-icon {
     color: hsl(var(--hsl-accent-1));
   }
-
   & .footer-link {
     transition: color 150ms ease-out;
     &,
@@ -337,5 +335,16 @@ h2 {
     &:active {
       color: hsl(var(--hsl-accent-2));
     }
+  }
+}
+
+.no-script {
+  & .container {
+    padding: var(--spacing);
+    display: block;
+    background-color: hsl(var(--hsl-accent-1));
+    border-radius: var(--border-radius);
+    color: var(--color-neutral-50);
+    text-align: center;
   }
 }

@@ -13,16 +13,16 @@
       content="frontendmentor, challenge, responsive layout, semantic html"
     />
     <meta name="theme-color" content="#FFFFFF" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-32x32.png" />
     <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Results summary component</title>
   </head>
   <body class="grid-layout grid-layout-large wrapper">
     <main>
-      <section aria-label="Results summary" class="container">
+      <section class="container">
         <div class="result grid-layout grid-layout-large">
           <h1 class="result-heading">Your Result</h1>
-          <p class="result-score"><span>76</span> of 100</p>
+          <p class="result-score"><span id="result">-</span> of 100</p>
           <div class="result-details grid-layout">
             <span>Great</span>
             <p>
@@ -33,55 +33,8 @@
         </div>
         <div class="summary grid-layout grid-layout-large">
           <h2>Summary</h2>
-          <ul class="grid-layout">
-            <li class="summary-item summary-item-1">
-              <div class="summary-item-group">
-                <img
-                  src="/assets/images/icon-reaction.svg"
-                  alt=""
-                  width="20"
-                  height="20"
-                />
-                <h3 class="summary-item-heading">Reaction</h3>
-              </div>
-              <p class="summary-item-score"><span>80</span> / 100</p>
-            </li>
-            <li class="summary-item summary-item-2">
-              <div class="summary-item-group">
-                <img
-                  src="/assets/images/icon-memory.svg"
-                  alt=""
-                  width="20"
-                  height="20"
-                />
-                <h3 class="summary-item-heading">Memory</h3>
-              </div>
-              <p class="summary-item-score"><span>92</span> / 100</p>
-            </li>
-            <li class="summary-item summary-item-3">
-              <div class="summary-item-group">
-                <img
-                  src="/assets/images/icon-verbal.svg"
-                  alt=""
-                  width="20"
-                  height="20"
-                />
-                <h3 class="summary-item-heading">Verbal</h3>
-              </div>
-              <p class="summary-item-score"><span>61</span> / 100</p>
-            </li>
-            <li class="summary-item summary-item-4">
-              <div class="summary-item-group">
-                <img
-                  src="/assets/images/icon-visual.svg"
-                  alt=""
-                  width="20"
-                  height="20"
-                />
-                <h3 class="summary-item-heading">Visual</h3>
-              </div>
-              <p class="summary-item-score"><span>72</span> / 100</p>
-            </li>
+          <ul id="summary-list" class="grid-layout">
+            Ooops...! Cannot display score details!
           </ul>
           <button type="button" class="summary-btn">Continue</button>
         </div>
@@ -105,6 +58,19 @@
         >.
       </p>
     </footer>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <noscript class="no-script">
+      <div class="container">
+        <p>
+          ⚠ For full functionality of this site it is necessary to enable
+          JavaScript. <br />
+          Here are the ☛
+          <a href="https://www.enable-javascript.com/" class="link">
+            instructions how to enable JavaScript in your web browser
+          </a>
+          ☚
+        </p>
+      </div>
+    </noscript>
   </body>
 </html>
